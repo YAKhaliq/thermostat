@@ -14,6 +14,11 @@ class Thermostat {
     this.maxTemp = 32
   }
 
+  turnOnPSM(){
+    this.powerSM = true
+    this.maxTemp = 25
+  }
+
   temp(){
     return this.temperature
   };
