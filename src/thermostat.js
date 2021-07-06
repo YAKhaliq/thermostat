@@ -29,4 +29,18 @@ class Thermostat {
       (this.temperature) -= 1
     };
   };
+
+  reset() {
+    this.temperature = 20;
+  }
+
+  currentEnergyUsage() {
+    if (this.temperature < 18) {
+      return 'low-usage';
+    } else if (this.temperature <= 25) {
+      return 'medium-usage';
+    } else {
+      return 'high-usage';
+    }
+  }
 };

@@ -65,4 +65,29 @@ describe('thermostat', function(){
     });
   });
 
+  describe('reset function', () => {
+    it('can reset the temperature to 20 degrees', () => {
+      for (let i = 1; i < 20; i++) thermostat.up();
+      thermostat.reset();
+      expect(thermostat.temp()).toEqual(20);
+    });
+  });
+  
+  describe('currentEnergyUsage', () => {
+    it('returns `low-usage` when temperature is below 18 degrees', () => {
+      for (let i = 1; i < 4; i++) thermostat.down();
+      expect(thermostat.currentEnergyUsage()).toEqual('low-usage');
+    });
+
+    it('returns `medium-usage` when temperature is between 18 and 25 degrees', () => {
+      expect(thermostat.currentEnergyUsage()).toEqual('medium-usage');
+    });
+
+    it('returns `high-usage` when temperature is above 25 degrees', () => {
+      thermostat.turnOffPSM();
+      for (let i = 1; i < 7; i++) thermostat.up();
+      expect(thermostat.currentEnergyUsage()).toEqual('high-usage');
+    });
+  });
+
 });
