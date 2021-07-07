@@ -46,8 +46,10 @@ reset.addEventListener('click', () =>{
 let powerUsage = document.getElementById("energy-usage")
 powerUsage.innerHTML = thermostat.currentEnergyUsage();
 
+
+
 const displayWeather = (city) => {
-  const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric`
+  const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${config.apiKey}&units=metric`
 
   fetch(url)
     .then((response) => {
